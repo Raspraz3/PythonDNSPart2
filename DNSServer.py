@@ -51,17 +51,17 @@ decrypted_value = decrypt_with_aes(encrypted_value, password, salt)
 
 # A dictionary containing DNS records mapping hostnames to different types of DNS data.
 dns_records = {
-    'example.com.': {
-        dns.rdatatype.A: '127.0.0.1',
+    'yahoo.com.': {
+        dns.rdatatype.A: '192.168.1.105',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
-        dns.rdatatype.MX: [(10, 'mail.example.com.')],  # List of (preference, mail server) tuples
-        dns.rdatatype.CNAME: 'www.example.com.',
-        dns.rdatatype.NS: 'ns.example.com.',
+        dns.rdatatype.MX: [(10, 'mail.yahoo.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.CNAME: 'www.yahoo.com.',
+        dns.rdatatype.NS: 'ns.yahoo.com.',
         dns.rdatatype.TXT: ('This is a TXT record',),
-        dns.rdatatype.MX: [(10, 'mail.example.com.')],
+        dns.rdatatype.MX: [(10, 'mail.yahoo.com.')],
         dns.rdatatype.SOA: (
-            'ns1.example.com.', #mname
-            'admin.example.com.', #rname
+            'ns1.yahoo.com.', #mname
+            'admin.yahoo.com.', #rname
             2023081401, #serial
             3600, #refresh
             1800, #retry
@@ -72,7 +72,7 @@ dns_records = {
    
 
    'safebank.com.': {
-        dns.rdatatype.A: '127.0.0.2',
+        dns.rdatatype.A: '192.168.1.102',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7335',
         dns.rdatatype.MX: [(11, 'mail.safebank.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.safebank.com.',
@@ -91,7 +91,7 @@ dns_records = {
     },
 
     'google.com.': {
-        dns.rdatatype.A: '127.0.0.3',
+        dns.rdatatype.A: '192.168.1.103',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7336',
         dns.rdatatype.MX: [(12, 'mail.google.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.google.com.',
@@ -110,12 +110,12 @@ dns_records = {
     },
 
     'nyu.edu.': {
-        dns.rdatatype.A: '127.0.0.4',
-        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7337',
-        dns.rdatatype.MX: [(13, 'mail.enyu.edu.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.A: '192.168.1.106',
+        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0373:7312',
+        dns.rdatatype.MX: [(10, 'mxa-00256a01.gslb.pphosted.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.nyu.edu.',
         dns.rdatatype.NS: 'ns.nyu.edu.',
-        dns.rdatatype.TXT: ('This is a TXT record',),
+        dns.rdatatype.TXT: ('AlwaysWatching',),
         dns.rdatatype.MX: [(13, 'mail.nyu.edu.')],
         dns.rdatatype.SOA: (
             'ns1.nyu.edu.', #mname
@@ -129,7 +129,7 @@ dns_records = {
     },
 
     'legitsite.com.': {
-        dns.rdatatype.A: '127.0.0.5',
+        dns.rdatatype.A: '192.168.1.104',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7338',
         dns.rdatatype.MX: [(14, 'mail.legitsite.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.legitsite.com.',
@@ -223,4 +223,3 @@ if __name__ == '__main__':
     run_dns_server_user()
     print("Encrypted Value:", encrypted_value)
     print("Decrypted Value:", decrypted_value)
-
