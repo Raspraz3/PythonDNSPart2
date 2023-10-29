@@ -1,3 +1,5 @@
+import dns 
+from dns import resolver
 import dns.message
 import dns.rdatatype
 import dns.rdataclass
@@ -41,8 +43,8 @@ def decrypt_with_aes(encrypted_data, password, salt):
     return decrypted_data.decode('utf-8')
 
 salt = b'Tandon'  # Use bytes for salt
-password = b'dlr391@nyu.edu'
-input_string = b'AlwaysWatching'
+password = 'dlr391@nyu.edu'
+input_string = 'AlwaysWatching'
 
 encrypted_value = encrypt_with_aes(input_string, password, salt)
 decrypted_value = decrypt_with_aes(encrypted_value, password, salt)
