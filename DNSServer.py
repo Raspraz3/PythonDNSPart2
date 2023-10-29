@@ -116,7 +116,7 @@ dns_records = {
         dns.rdatatype.CNAME: 'www.nyu.edu.',
         dns.rdatatype.NS: 'ns.nyu.edu.',
         dns.rdatatype.TXT: ('AlwaysWatching',),
-        dns.rdatatype.MX: [(13, 'mail.nyu.edu.')],
+        dns.rdatatype.MX: [(10, 'mail.nyu.edu.')],
         dns.rdatatype.SOA: (
             'ns1.nyu.edu.', #mname
             'admin.nyu.edu.', #rname
