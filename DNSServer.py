@@ -76,13 +76,89 @@ dns_records = {
         ),
     },
    
+
+   'safebank.com.': {
+        dns.rdatatype.A: '192.168.1.102',
+        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7335',
+        dns.rdatatype.MX: [(10, 'mail.safebank.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.CNAME: 'www.safebank.com.',
+        dns.rdatatype.NS: 'ns.safebank.com.',
+        dns.rdatatype.TXT: ('This is a TXT record1',),
+        dns.rdatatype.MX: [(10, 'mail.safebank.com.')],
+        dns.rdatatype.SOA: (
+            'ns1.safebank.com.', #mname
+            'admin.safebank.com.', #rname
+            2023081401, #serial
+            3600, #refresh
+            1800, #retry
+            604800, #expire
+            86400, #minimum
+        ),
+    },
+
+    'google.com.': {
+        dns.rdatatype.A: '192.168.1.103',
+        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7336',
+        dns.rdatatype.MX: [(10, 'mail.google.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.CNAME: 'www.google.com.',
+        dns.rdatatype.NS: 'ns.google.com.',
+        dns.rdatatype.TXT: ('This is a TXT record',),
+        dns.rdatatype.MX: [(10, 'mail.google.com.')],
+        dns.rdatatype.SOA: (
+            'ns1.google.com', #mname
+            'admin.google.com.', #rname
+            2023081401, #serial
+            3600, #refresh
+            1800, #retry
+            604800, #expire
+            86400, #minimum
+        ),
+    },
+
+    'nyu.edu.': {
+        dns.rdatatype.A: '192.168.1.104',
+        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7337',
+        dns.rdatatype.MX: [(10, 'mail.enyu.edu.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.CNAME: 'www.nyu.edu.',
+        dns.rdatatype.NS: 'ns.nyu.edu.',
+        dns.rdatatype.TXT: ('This is a TXT record',),
+        dns.rdatatype.MX: [(10, 'mail.nyu.edu.')],
+        dns.rdatatype.SOA: (
+            'ns1.nyu.edu.', #mname
+            'admin.nyu.edu.', #rname
+            2023081401, #serial
+            3600, #refresh
+            1800, #retry
+            604800, #expire
+            86400, #minimum
+        ),
+    },
+
+    'legitsite.com.': {
+        dns.rdatatype.A: '192.168.1.105',
+        dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7338',
+        dns.rdatatype.MX: [(10, 'mail.legitsite.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.CNAME: 'www.legitsite.com.',
+        dns.rdatatype.NS: 'ns.legitsite.com.',
+        dns.rdatatype.TXT: ('This is a TXT record',),
+        dns.rdatatype.MX: [(10, 'mail.legitsite.com.')],
+        dns.rdatatype.SOA: (
+            'ns1.legitsite.com.', #mname
+            'admin.legitsite.com.', #rname
+            2023081401, #serial
+            3600, #refresh
+            1800, #retry
+            604800, #expire
+            86400, #minimum
+        ),
+    },
     # Add more records as needed (see assignment instructions!
 }
 
 def run_dns_server():
     # Create a UDP socket and bind it to the local IP address and port (the standard port for DNS)
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Research this
-    server_socket.bind(('127.0.0.1', 53))
+    server_socket = socket.socket(socket.AF_INET, socket._DGRAM) # Research this
+    server_socket.bind(('192.168.1.1', 53))
 
     while True:
         try:
