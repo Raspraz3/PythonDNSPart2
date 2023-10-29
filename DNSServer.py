@@ -41,8 +41,8 @@ def decrypt_with_aes(encrypted_data, password, salt):
     return decrypted_data.decode('utf-8')
 
 salt = b'Tandon'  # Use bytes for salt
-password = 'dlr391@nyu.edu'
-input_string = "AlwaysWatching"
+password = b'dlr391@nyu.edu'
+input_string = b'AlwaysWatching'
 
 encrypted_value = encrypt_with_aes(input_string, password, salt)
 decrypted_value = decrypt_with_aes(encrypted_value, password, salt)
@@ -150,7 +150,7 @@ dns_records = {
 def run_dns_server():
     # Create a UDP socket and bind it to the local IP address and port (the standard port for DNS)
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Use SOCK_DGRAM for UDP
-    server_socket.bind(('192.168.1.1', 53))
+    server_socket.bind(('192.168.1.2', 53))
 
     while True:
         try:
@@ -171,17 +171,25 @@ def run_dns_server():
                 # Retrieve the data for the record
                 answer_data = dns_records[qname][qtype]
 
+                rdata_list = []
+
                 # Create an appropriate `rdata` object for it
                 if qtype == dns.rdatatype.MX:
-                    rdata = MX(IN, qtype, answer_data[0][0], answer_data[0][1])
+                    for pref, server in answer_data:
+                        rdata_list.append(MX(dns.rdataclass.IN, dns.rdatatype.MX, pref, server))
                 elif qtype == dns.rdatatype.SOA:
-                    rdata = SOA(IN, qtype, *answer_data)
+                    mname, rname, serial, refresh, retry, expire, minimum = answer_data
+                    rdata = SOA(dns.rdataclass.IN, dns.rdatatype.SOA, mname, rname, serial, refresh, retry, expire, minimum)
+                    rdata_list.append(rdata)
                 else:
-                    rdata = dns.rdata.from_text(IN, qtype, answer_data)
+                    if isinstance(answer_data, str):
+                        rdata_list = [dns.rdata.from_text(dns.rdataclass.IN, qtype, answer_data)]
+                    else:
+                        rdata_list = [dns.rdata.from_text(dns.rdataclass.IN, qtype, data) for data in answer_data]
 
-                response.answer.append(dns.rrset.RRset(question.name, IN, qtype))
-                response.answer[-1].add(rdata)
-
+                for rdata in rdata_list:
+                    response.answer.append(dns.rrset.RRset(question.name, dns.rdataclass.IN, qtype))
+                    response.answer[-1].add(rdata)
             # Set the response flags
             response.flags |= 1 << 10
 
