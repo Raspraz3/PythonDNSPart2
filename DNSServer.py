@@ -146,6 +146,7 @@ dns_records = {
             86400, #minimum
         ),
     },
+}
     # Add more records as needed (see assignment instructions!
 
 def run_dns_server():
@@ -222,4 +223,3 @@ if __name__ == '__main__':
     run_dns_server_user()
     print("Encrypted Value:", encrypted_value)
     print("Decrypted Value:", decrypted_value)
-
