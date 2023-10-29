@@ -44,7 +44,7 @@ def decrypt_with_aes(encrypted_data, password, salt):
 
 salt = b'Tandon'  # Use bytes for salt
 password = 'dlr391@nyu.edu'
-input_string = 'AlwaysWatching'
+input_string = "AlwaysWatching"
 
 encrypted_value = encrypt_with_aes(input_string, password, salt)
 decrypted_value = decrypt_with_aes(encrypted_value, password, salt)
@@ -74,11 +74,11 @@ dns_records = {
    'safebank.com.': {
         dns.rdatatype.A: '127.0.0.2',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7335',
-        dns.rdatatype.MX: [(10, 'mail.safebank.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.MX: [(11, 'mail.safebank.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.safebank.com.',
         dns.rdatatype.NS: 'ns.safebank.com.',
         dns.rdatatype.TXT: ('This is a TXT record1',),
-        dns.rdatatype.MX: [(10, 'mail.safebank.com.')],
+        dns.rdatatype.MX: [(11, 'mail.safebank.com.')],
         dns.rdatatype.SOA: (
             'ns1.safebank.com.', #mname
             'admin.safebank.com.', #rname
@@ -93,11 +93,11 @@ dns_records = {
     'google.com.': {
         dns.rdatatype.A: '127.0.0.3',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7336',
-        dns.rdatatype.MX: [(10, 'mail.google.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.MX: [(12, 'mail.google.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.google.com.',
         dns.rdatatype.NS: 'ns.google.com.',
         dns.rdatatype.TXT: ('This is a TXT record',),
-        dns.rdatatype.MX: [(10, 'mail.google.com.')],
+        dns.rdatatype.MX: [(12, 'mail.google.com.')],
         dns.rdatatype.SOA: (
             'ns1.google.com', #mname
             'admin.google.com.', #rname
@@ -112,11 +112,11 @@ dns_records = {
     'nyu.edu.': {
         dns.rdatatype.A: '127.0.0.4',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7337',
-        dns.rdatatype.MX: [(10, 'mail.enyu.edu.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.MX: [(13, 'mail.enyu.edu.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.nyu.edu.',
         dns.rdatatype.NS: 'ns.nyu.edu.',
         dns.rdatatype.TXT: ('This is a TXT record',),
-        dns.rdatatype.MX: [(10, 'mail.nyu.edu.')],
+        dns.rdatatype.MX: [(13, 'mail.nyu.edu.')],
         dns.rdatatype.SOA: (
             'ns1.nyu.edu.', #mname
             'admin.nyu.edu.', #rname
@@ -131,11 +131,11 @@ dns_records = {
     'legitsite.com.': {
         dns.rdatatype.A: '127.0.0.5',
         dns.rdatatype.AAAA: '2001:0db8:85a3:0000:0000:8a2e:0370:7338',
-        dns.rdatatype.MX: [(10, 'mail.legitsite.com.')],  # List of (preference, mail server) tuples
+        dns.rdatatype.MX: [(14, 'mail.legitsite.com.')],  # List of (preference, mail server) tuples
         dns.rdatatype.CNAME: 'www.legitsite.com.',
         dns.rdatatype.NS: 'ns.legitsite.com.',
         dns.rdatatype.TXT: ('This is a TXT record',),
-        dns.rdatatype.MX: [(10, 'mail.legitsite.com.')],
+        dns.rdatatype.MX: [(14, 'mail.legitsite.com.')],
         dns.rdatatype.SOA: (
             'ns1.legitsite.com.', #mname
             'admin.legitsite.com.', #rname
@@ -223,3 +223,4 @@ if __name__ == '__main__':
     run_dns_server_user()
     print("Encrypted Value:", encrypted_value)
     print("Decrypted Value:", decrypted_value)
+
